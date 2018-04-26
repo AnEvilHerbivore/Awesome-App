@@ -29,10 +29,10 @@ function buttonFactory (classList, textContent) {
 }
 
 
-function cardFactory (sectionText, classList) {
+function cardFactory (classList, textContent) {
     const newSection = document.createElement("section")
-    newSection.textContent = sectionText
     newSection.classList = classList
+    newSection.textContent = textContent
     return newSection
 }
 
@@ -42,8 +42,8 @@ function append (parent, child) {
 }
 
 
-createButton = inputFieldFactory("input--text", "Enter Card Text Here...", "text")
-append(fragment, createButton)
+createInputField = inputFieldFactory("input--text", "Enter Card Text Here...", "text")
+append(fragment, createInputField)
 
 
 const createCardButton = buttonFactory("button--submit", "Create Card")
@@ -55,13 +55,14 @@ append(fragment, createCardButton)
 1. Get value of input field
 */
 createCardButton.addEventListener("click", function () {
-    const textInput = createButton.value
-    console.log(textInput)
+    const textInput = createInputField.value;
+    // 2. create card component with text indside
+    append(output,cardFactory("card", textInput))
+    createInputField.value = ""
 })
 
-/*
-2. create card component with text indside
-*/
+
+
 
 //create card component
 
